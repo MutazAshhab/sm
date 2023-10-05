@@ -15,3 +15,22 @@ ticketRouter.get('/ticket/:id', (req: Request, res: Response) => {
     res.status(404).send('Item not found')
   }
 })
+
+ticketRouter.post('/ticket', (req: Request, res: Response) => {
+  if (!req.body.title || !req.body.description) {
+    res.status(400).send('Entries must have a title and description')
+    return
+  }
+
+  const ticketNumber = tickets.length + 1
+
+  const newTicket = {
+    id: `ticket-${ticketNumber}`,
+    title: req.body.title,
+    description: req.body.description,
+  }
+
+  tickets.push(newTicket)
+
+  res.status(201).json(newTicket)
+})
