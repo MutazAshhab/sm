@@ -59,4 +59,15 @@ ticketRouter.put('/ticket/:id', (req: Request, res: Response) => {
   res.status(201).json(updatedTicket)
 })
 
-ticketRouter.delete('/ticket/:id', (req: Request, res: Response) => {})
+ticketRouter.delete('/ticket/:id', (req: Request, res: Response) => {
+  const ticketIdx = tickets.findIndex((t) => t.id === req.params.id)
+
+  if (ticketIdx === -1) {
+    res.status(404).send('Ticket not found')
+    return
+  }
+
+  delete tickets[ticketIdx]
+
+  res.status(204).send()
+})
