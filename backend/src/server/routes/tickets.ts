@@ -12,7 +12,7 @@ ticketRouter.get('/ticket/:id', (req: Request, res: Response) => {
   if (ticket) {
     res.json(ticket)
   } else {
-    res.status(404).send('Item not found')
+    res.status(404).send('Ticket not found')
   }
 })
 
@@ -44,7 +44,7 @@ ticketRouter.put('/ticket/:id', (req: Request, res: Response) => {
   const ticketIdx = tickets.findIndex((t) => t.id === req.params.id)
 
   if (ticketIdx === -1) {
-    res.status(404).send('Item not found')
+    res.status(404).send('Ticket not found')
     return
   }
 
