@@ -34,3 +34,29 @@ ticketRouter.post('/ticket', (req: Request, res: Response) => {
 
   res.status(201).json(newTicket)
 })
+
+ticketRouter.put('/ticket/:id', (req: Request, res: Response) => {
+  if (!req.body.title || !req.body.description) {
+    res.status(400).send('Entries must have a title and description')
+    return
+  }
+
+  const ticketIdx = tickets.findIndex((t) => t.id === req.params.id)
+
+  if (ticketIdx === -1) {
+    res.status(404).send('Item not found')
+    return
+  }
+
+  const updatedTicket = {
+    id: tickets[ticketIdx].id,
+    title: req.body.title,
+    description: req.body.description,
+  }
+
+  tickets[ticketIdx] = updatedTicket
+
+  res.status(201).json(updatedTicket)
+})
+
+ticketRouter.delete('/ticket/:id', (req: Request, res: Response) => {})
