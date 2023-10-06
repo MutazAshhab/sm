@@ -20,7 +20,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <div className="flex flex-col gap-4">
       {tickets.map((t) => (
         <Ticket
           key={t.id}
@@ -29,6 +29,6 @@ export default function Home() {
           description={t.description}
         />
       ))}
-    </>
+    </div>
   )
 }
