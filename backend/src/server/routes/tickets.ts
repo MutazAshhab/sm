@@ -67,7 +67,7 @@ ticketRouter.delete('/ticket/:id', (req: Request, res: Response) => {
     return
   }
 
-  delete tickets[ticketIdx]
+  tickets.splice(ticketIdx, 1)
 
   res.status(204).send()
 })
