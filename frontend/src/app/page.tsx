@@ -1,3 +1,5 @@
+'use client'
+
 import { getAllTickets } from '@/api/tickets'
 import { Ticket as TicketType } from '@/types/tickets'
 import { useEffect, useState } from 'react'
